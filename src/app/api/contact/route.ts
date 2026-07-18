@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const DISCORD_WEBHOOK_URL =
-  "https://discord.com/api/webhooks/1528149190440386722/K_oUvYcSDGafmvPVg7FGmEJLkYgU9qGEG8EeP66FlGsuyePq7oFDanscqLWRCTamZcgV";
+  "https://discord.com/api/webhooks/1528154931511431209/YfDsUfK_jJXgwkZJ_NDOfhEudGBa6_vJdwjg3wU-Pukg2SYw7C3qRGGGsca5Bl1JUmLS";
 
 const PLAN_COLORS: Record<string, number> = {
   "베이직": 0x5865f2,
