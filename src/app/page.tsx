@@ -7,6 +7,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ServicesSection />
+        <EventSection />
         <PricingSection />
         <AboutSection />
         <ConsultSection />
@@ -28,11 +29,11 @@ function Navbar() {
           <a href="#services" className="hover:text-white transition-colors">
             서비스
           </a>
+          <a href="#event" className="hover:text-white transition-colors">
+            이벤트
+          </a>
           <a href="#pricing" className="hover:text-white transition-colors">
             가격
-          </a>
-          <a href="#about" className="hover:text-white transition-colors">
-            소개
           </a>
           <a href="#contact" className="hover:text-white transition-colors">
             상담문의
@@ -135,7 +136,7 @@ function ServicesSection() {
       icon: "💡",
       title: "맞춤 컨설팅",
       description:
-          "당신의 환경과 사용 목적에 맞는 1:1 맞춤 세팅 컨설팅을 제공합니다.",
+        "당신의 환경과 사용 목적에 맞는 1:1 맞춤 세팅 컨설팅을 제공합니다.",
     },
   ];
 
@@ -169,11 +170,54 @@ function ServicesSection() {
   );
 }
 
+function EventSection() {
+  return (
+    <section id="event" className="py-20 sm:py-28 bg-surface-dark">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <div className="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-sm text-accent mb-6">
+            한정 이벤트
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <span className="gradient-text">노래 세팅</span> +{" "}
+            <span className="gradient-text">토크 세팅</span>
+          </h2>
+          <p className="text-2xl font-bold text-accent">1 + 1</p>
+          <p className="text-text-secondary max-w-xl mx-auto mt-4">
+            노래 세팅과 토크 세팅을 동시에! 두 세팅 모두 받아보실 수 있는 이벤트입니다.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="bg-surface rounded-2xl p-8 border border-white/5 text-center">
+            <div className="text-4xl mb-4">🎵</div>
+            <h3 className="text-xl font-bold mb-2">노래 세팅</h3>
+            <p className="text-sm text-text-secondary">
+              노래 방송, 합주, 노래방용 최적화 세팅. 에코, 리버브, 보컬 튜닝까지.
+            </p>
+          </div>
+          <div className="bg-surface rounded-2xl p-8 border border-white/5 text-center">
+            <div className="text-4xl mb-4">🎙</div>
+            <h3 className="text-xl font-bold mb-2">토크 세팅</h3>
+            <p className="text-sm text-text-secondary">
+              토크 방송, 보이스 채팅, 라이브 주간 대화용 최적화 세팅.
+            </p>
+          </div>
+        </div>
+        <div className="text-center mt-8">
+          <p className="text-text-secondary text-sm">
+            * 노래 세팅 또는 토크 세팅 단일 구매도 가능합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PricingSection() {
   const plans = [
     {
       name: "베이직",
-      price: "15,000",
+      price: "30,000",
       description: "기본 마이크 세팅이 필요한 분들께",
       features: [
         "마이크 감도 최적화",
@@ -186,7 +230,7 @@ function PricingSection() {
     },
     {
       name: "스탠다드",
-      price: "30,000",
+      price: "50,000",
       description: "잡음 제거 + 음질 개선이 필요한 분들께",
       features: [
         "베이직 포함 모든 서비스",
@@ -200,7 +244,7 @@ function PricingSection() {
     },
     {
       name: "프로",
-      price: "50,000",
+      price: "100,000",
       description: "방송/게이밍 전문 세팅이 필요한 분들께",
       features: [
         "스탠다드 포함 모든 서비스",
@@ -216,7 +260,7 @@ function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20 sm:py-28 bg-surface-dark">
+    <section id="pricing" className="py-20 sm:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -303,7 +347,7 @@ function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-28">
+    <section id="about" className="py-20 sm:py-28 bg-surface-dark">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -336,7 +380,7 @@ function AboutSection() {
 
 function ConsultSection() {
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-surface-dark">
+    <section id="contact" className="py-20 sm:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -419,9 +463,10 @@ function ConsultSection() {
                   name="plan"
                   className="w-full bg-surface-dark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors"
                 >
-                  <option value="베이직">베이직 (15,000원)</option>
-                  <option value="스탠다드">스탠다드 (30,000원)</option>
-                  <option value="프로">프로 (50,000원)</option>
+                  <option value="베이직">베이직 (30,000원)</option>
+                  <option value="스탠다드">스탠다드 (50,000원)</option>
+                  <option value="프로">프로 (100,000원)</option>
+                  <option value="노래+토크 1+1">노래+토크 1+1</option>
                   <option value="상담만">상담만 원해요</option>
                 </select>
               </div>

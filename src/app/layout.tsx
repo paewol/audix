@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Audix - 디스코드 마이크 세팅 전문",
+  title: "Audix | 디스코드 마이크 세팅 전문 - 보이스튜닝, 잡음 제거, 노래 세팅",
   description:
-    "디스코드 음성 채팅 최적화, 마이크 세팅 전문 서비스. 전문가가 직접 설정해드리는 프리미엄 보이스튜닝. 고음질 마이크 설정, 잡음 제거, 에코 설정까지.",
+    "Audix는 디스코드 마이크 세팅 전문 서비스입니다. 기본 세팅, 잡음 제거, 보이스튜닝, 게이밍 최적화, 방송용 세팅, 노래+토크 세팅까지 전문가가 직접 설정해드립니다. 베이직 30,000원부터.",
   keywords: [
     "디스코드 마이크 세팅",
     "마이크 설정",
@@ -15,21 +15,31 @@ export const metadata: Metadata = {
     "디스코드 세팅",
     "마이크 에코",
     "보이스 세팅",
+    "노래 세팅",
+    "토크 세팅",
+    "방송용 마이크 세팅",
+    "게이밍 마이크 세팅",
+    "Audix",
     "discord mic setting",
     "discord voice tuning",
+    "discord noise cancel",
   ],
   authors: [{ name: "Audix" }],
   openGraph: {
-    title: "Audix - 디스코드 마이크 세팅 전문",
+    title: "Audix | 디스코드 마이크 세팅 전문",
     description:
-      "프로 수준의 디스코드 마이크 세팅 서비스. 잡음 제거, 고음질 설정, 에코 효과까지 전문가가 직접 설정해드립니다.",
+      "프로 수준의 디스코드 마이크 세팅 서비스. 잡음 제거, 보이스튜닝, 노래+토크 세팅까지. 전문가가 직접 설정해드립니다. 베이직 30,000원~",
     locale: "ko_KR",
     type: "website",
     url: "https://audix.vercel.app",
+    siteName: "Audix",
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    canonical: "https://audix.vercel.app",
   },
 };
 
@@ -41,28 +51,70 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <head>
+        <meta name="naver-site-verification" content="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Service",
-              name: "Audix - 디스코드 마이크 세팅 전문",
+              "@type": "LocalBusiness",
+              name: "Audix",
               description:
-                "전문가가 직접 설정해주는 프리미엄 디스코드 마이크 세팅 서비스. 음성 품질 최적화, 잡음 제거, 에코 설정.",
+                "디스코드 마이크 세팅 전문 서비스. 보이스튜닝, 잡음 제거, 노래 세팅, 토크 세팅, 방송용 세팅.",
+              url: "https://audix.vercel.app",
+              priceRange: "30,000원 ~ 100,000원",
+              areaServed: {
+                "@type": "Country",
+                name: "대한민국",
+              },
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "디스코드 마이크 세팅 서비스",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "베이직 세팅",
+                      description: "기본 마이크 세팅",
+                    },
+                    price: "30000",
+                    priceCurrency: "KRW",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "스탠다드 세팅",
+                      description: "잡음 제거 + 음질 개선",
+                    },
+                    price: "50000",
+                    priceCurrency: "KRW",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "프로 세팅",
+                      description: "방송/게이밍 전문 세팅",
+                    },
+                    price: "100000",
+                    priceCurrency: "KRW",
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "노래+토크 1+1 세팅",
+                      description: "노래 세팅과 토크 세팅 패키지",
+                    },
+                  },
+                ],
+              },
               provider: {
                 "@type": "Organization",
                 name: "Audix",
-              },
-              serviceType: "Discord Mic Setting",
-              areaServed: "KR",
-              url: "https://audix.vercel.app",
-              availableChannel: {
-                "@type": "ServiceChannel",
-                servicePhoneOption: {
-                  "@type": "ServicePhoneSpecification",
-                  phone: "Discord DM",
-                },
+                url: "https://audix.vercel.app",
               },
             }),
           }}
