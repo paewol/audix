@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Audix | 디스코드 마이크 세팅 전문 - 보이스튜닝, 잡음 제거, 노래 세팅",
   description:
-    "Audix는 디스코드 마이크 세팅 전문 서비스입니다. 기본 세팅, 잡음 제거, 보이스튜닝, 게이밍 최적화, 방송용 세팅, 노래+토크 세팅까지 전문가가 직접 설정해드립니다. 베이직 30,000원부터.",
+    "Audix는 디스코드 마이크 세팅 전문 서비스입니다. 기본 세팅, 잡음 제거, 보이스튜닝, 게이밍 최적화, 방송용 세팅, 노래+토크 세팅까지 전문가가 직접 설정해드립니다. 베이직 20,000원부터.",
   keywords: [
     "디스코드 마이크 세팅",
     "마이크 설정",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Audix | 디스코드 마이크 세팅 전문",
     description:
-      "프로 수준의 디스코드 마이크 세팅 서비스. 잡음 제거, 보이스튜닝, 노래+토크 세팅까지. 전문가가 직접 설정해드립니다. 베이직 30,000원~",
+      "프로 수준의 디스코드 마이크 세팅 서비스. 잡음 제거, 보이스튜닝, 노래+토크 세팅까지. 전문가가 직접 설정해드립니다. 20,000원~",
     locale: "ko_KR",
     type: "website",
     url: "https://audix.vercel.app",
@@ -62,7 +62,7 @@ export default function RootLayout({
               description:
                 "디스코드 마이크 세팅 전문 서비스. 보이스튜닝, 잡음 제거, 노래 세팅, 토크 세팅, 방송용 세팅.",
               url: "https://audix.vercel.app",
-              priceRange: "30,000원 ~ 100,000원",
+              priceRange: "20,000원 ~ 80,000원",
               areaServed: {
                 "@type": "Country",
                 name: "대한민국",
@@ -78,14 +78,14 @@ export default function RootLayout({
                       name: "베이직 세팅",
                       description: "기본 마이크 세팅",
                     },
-                    price: "30000",
+                    price: "20000",
                     priceCurrency: "KRW",
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "스탠다드 세팅",
+                      name: "프리미엄 세팅",
                       description: "잡음 제거 + 음질 개선",
                     },
                     price: "50000",
@@ -98,7 +98,7 @@ export default function RootLayout({
                       name: "프로 세팅",
                       description: "방송/게이밍 전문 세팅",
                     },
-                    price: "100000",
+                    price: "80000",
                     priceCurrency: "KRW",
                   },
                   {

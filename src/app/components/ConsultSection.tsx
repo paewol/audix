@@ -133,9 +133,9 @@ export default function ConsultSection() {
                   name="plan"
                   className="w-full bg-surface-dark border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary/50 transition-colors"
                 >
-                  <option value="베이직">베이직 (30,000원)</option>
-                  <option value="스탠다드">스탠다드 (50,000원)</option>
-                  <option value="프로">프로 (100,000원)</option>
+                  <option value="베이직">베이직 (20,000원)</option>
+                  <option value="프리미엄">프리미엄 (50,000원)</option>
+                  <option value="프로">프로 (80,000원)</option>
                   <option value="노래+토크 1+1">노래+토크 1+1</option>
                   <option value="상담만">상담만 원해요</option>
                 </select>

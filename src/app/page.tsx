@@ -218,7 +218,7 @@ function PricingSection() {
   const plans = [
     {
       name: "베이직",
-      price: "30,000",
+      price: "20,000",
       description: "기본 마이크 세팅이 필요한 분들께",
       features: [
         "마이크 감도 최적화",
@@ -230,7 +230,7 @@ function PricingSection() {
       popular: false,
     },
     {
-      name: "스탠다드",
+      name: "프리미엄",
       price: "50,000",
       description: "잡음 제거 + 음질 개선이 필요한 분들께",
       features: [
@@ -245,7 +245,7 @@ function PricingSection() {
     },
     {
       name: "프로",
-      price: "100,000",
+      price: "80,000",
       description: "방송/게이밍 전문 세팅이 필요한 분들께",
       features: [
         "스탠다드 포함 모든 서비스",
