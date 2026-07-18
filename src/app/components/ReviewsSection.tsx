@@ -11,24 +11,21 @@ interface Review {
   date: string;
 }
 
-const SEED_REVIEWS: Review[] = [];
-
-const WEBHOOK_URL =
-  "https://discord.com/api/webhooks/1528154931511431209/YfDsUfK_jJXgwkZJ_NDOfhEudGBa6_vJdwjg3wU-Pukg2SYw7C3qRGGGsca5Bl1JUmLS";
-
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("audix-reviews");
-    if (stored) {
-      setReviews([...SEED_REVIEWS, ...JSON.parse(stored)]);
-    } else {
-      setReviews(SEED_REVIEWS);
-    }
+    fetch("/api/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+        setFetching(false);
+      })
+      .catch(() => setFetching(false));
   }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -37,46 +34,21 @@ export default function ReviewsSection() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const name = formData.get("name") as string;
-    const plan = formData.get("plan") as string;
-    const rating = Number(formData.get("rating"));
-    const text = formData.get("text") as string;
-
-    const newReview: Review = {
-      id: Date.now().toString(),
-      name,
-      plan,
-      rating,
-      text,
-      date: new Date().toISOString().slice(0, 7).replace("-", "."),
-    };
-
-    const stored = localStorage.getItem("audix-reviews");
-    const existing: Review[] = stored ? JSON.parse(stored) : [];
-    existing.push(newReview);
-    localStorage.setItem("audix-reviews", JSON.stringify(existing));
-    setReviews([...SEED_REVIEWS, ...existing]);
-
-    await fetch(WEBHOOK_URL, {
+    const res = await fetch("/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: "Audix Bot",
-        embeds: [
-          {
-            title: "⭐ 새로운 후기 등록",
-            color: 0xfee75c,
-            fields: [
-              { name: "👤 이름", value: name, inline: true },
-              { name: "📦 상품", value: plan, inline: true },
-              { name: "⭐ 별점", value: "★".repeat(rating) + "☆".repeat(5 - rating), inline: true },
-              { name: "📝 후기", value: text, inline: false },
-            ],
-            timestamp: new Date().toISOString(),
-          },
-        ],
+        name: formData.get("name"),
+        plan: formData.get("plan"),
+        rating: Number(formData.get("rating")),
+        text: formData.get("text"),
       }),
     });
+
+    const data = await res.json();
+    if (data.review) {
+      setReviews([...reviews, data.review]);
+    }
 
     setLoading(false);
     setSubmitted(true);
@@ -194,7 +166,12 @@ export default function ReviewsSection() {
         )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.length === 0 && (
+          {fetching && (
+            <div className="col-span-full text-center py-12 text-text-secondary">
+              후기를 불러오는 중...
+            </div>
+          )}
+          {!fetching && reviews.length === 0 && (
             <div className="col-span-full text-center py-12 text-text-secondary">
               <p className="text-lg mb-2">아직 후기가 없습니다</p>
               <p className="text-sm">첫 번째 후기를 작성해보세요!</p>
