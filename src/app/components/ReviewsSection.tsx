@@ -11,56 +11,7 @@ interface Review {
   date: string;
 }
 
-const SEED_REVIEWS: Review[] = [
-  {
-    id: "seed-1",
-    name: "세리나",
-    plan: "프리미엄",
-    rating: 5,
-    text: "마이크 잡음이 너무 심해서 고민이었는데, 한 번 세팅 받고 나서 완전히 해결됐어요. 키보드 소리도 안 나고 목소리가 확 달라졌습니다!",
-    date: "2025.06",
-  },
-  {
-    id: "seed-2",
-    name: "밤비노",
-    plan: "프로",
-    rating: 5,
-    text: "방송 시작하면서 마이크 세팅이 필요했는데, 방송용으로 딱 맞게 세팅해줘서 바로 시작할 수 있었어요. 에코 이펙트도 너무 좋아요.",
-    date: "2025.06",
-  },
-  {
-    id: "seed-3",
-    name: "하늘별",
-    plan: "베이직",
-    rating: 5,
-    text: "가격도 합리적이고 설명도 잘 해주셔서 좋았습니다. 처음 마이크 사보는 사람도 쉽게 따라할 수 있게 가이드 해주세요.",
-    date: "2025.05",
-  },
-  {
-    id: "seed-4",
-    name: "코코몽",
-    plan: "노래+토크 1+1",
-    rating: 5,
-    text: "노래방 앱에서 노래 부를 때랑 디스코드에서 대화할 때 세팅이 달라서 매번 바꾸기 힘들었는데, 1+1으로 두 개 세팅 받아서 너무 편해요!",
-    date: "2025.05",
-  },
-  {
-    id: "seed-5",
-    name: "민트티",
-    plan: "프리미엄",
-    rating: 4,
-    text: "발로란트 하면서 보이스 채팅이 잘 안 됐는데, 게이밍 세팅 후에 팀원들 목소리도 잘 들리고 제 목소리도 선명해졌어요. 추천!",
-    date: "2025.04",
-  },
-  {
-    id: "seed-6",
-    name: "루나킹",
-    plan: "프로",
-    rating: 5,
-    text: "유튜브 라이브 방송용으로 세팅 맡겼는데, 시청자들이 목소리가 달라졌다고 하네요. 1:1 원격 세팅도 편리했습니다.",
-    date: "2025.04",
-  },
-];
+const SEED_REVIEWS: Review[] = [];
 
 const WEBHOOK_URL =
   "https://discord.com/api/webhooks/1528154931511431209/YfDsUfK_jJXgwkZJ_NDOfhEudGBa6_vJdwjg3wU-Pukg2SYw7C3qRGGGsca5Bl1JUmLS";
@@ -243,6 +194,12 @@ export default function ReviewsSection() {
         )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reviews.length === 0 && (
+            <div className="col-span-full text-center py-12 text-text-secondary">
+              <p className="text-lg mb-2">아직 후기가 없습니다</p>
+              <p className="text-sm">첫 번째 후기를 작성해보세요!</p>
+            </div>
+          )}
           {reviews
             .slice()
             .reverse()
