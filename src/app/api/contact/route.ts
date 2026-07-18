@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const DISCORD_WEBHOOK_URL =
+  "https://discord.com/api/webhooks/1528149190440386722/K_oUvYcSDGafmvPVg7FGmEJLkYgU9qGEG8EeP66FlGsuyePq7oFDanscqLWRCTamZcgV";
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const name = formData.get("name") as string;
     const contact = formData.get("contact") as string;
     const plan = formData.get("plan") as string;
-    const message = formData.get("message") as string;
+    const message = (formData.get("message") as string) || "없음";
 
     if (!name || !contact) {
       return NextResponse.json(
@@ -15,12 +18,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log("=== 새로운 상담 신청 ===");
-    console.log(`닉네임: ${name}`);
-    console.log(`연락처: ${contact}`);
-    console.log(`상품: ${plan}`);
-    console.log(`내용: ${message}`);
-    console.log("========================");
+    const embed = {
+      title: "📩 새로운 상담 신청",
+      color: 5814783,
+      fields: [
+        { name: "👤 닉네임", value: name, inline: true },
+        { name: "💬 연락처", value: contact, inline: true },
+        { name: "📦 상품", value: plan, inline: true },
+        { name: "📝 상세 내용", value: message || "없음", inline: false },
+      ],
+      timestamp: new Date().toISOString(),
+      footer: { text: "Audix 상담 문의" },
+    };
+
+    const res = await fetch(DISCORD_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ embeds: [embed] }),
+    });
+
+    if (!res.ok) {
+      console.error("Discord webhook 전송 실패:", res.status);
+    }
 
     return NextResponse.json({
       success: true,
