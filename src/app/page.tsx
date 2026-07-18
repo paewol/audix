@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ConsultSection from "./components/ConsultSection";
+import ReviewsSection from "./components/ReviewsSection";
 
 export default function Home() {
   return (
@@ -371,99 +372,6 @@ function AboutSection() {
                 <p className="text-sm text-text-secondary leading-relaxed">
                   {reason.description}
                 </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ReviewsSection() {
-  const reviews = [
-    {
-      name: "세리나",
-      plan: "프리미엄",
-      rating: 5,
-      text: "마이크 잡음이 너무 심해서 고민이었는데, 한 번 세팅 받고 나서 완전히 해결됐어요. 키보드 소리도 안 나고 목소리가 확 달라졌습니다!",
-      date: "2025.06",
-    },
-    {
-      name: "밤비노",
-      plan: "프로",
-      rating: 5,
-      text: "방송 시작하면서 마이크 세팅이 필요했는데, 방송용으로 딱 맞게 세팅해줘서 바로 시작할 수 있었어요. 에코 이펙트도 너무 좋아요.",
-      date: "2025.06",
-    },
-    {
-      name: "하늘별",
-      plan: "베이직",
-      rating: 5,
-      text: "가격도 합리적이고 설명도 잘 해주셔서 좋았습니다. 처음 마이크 사보는 사람도 쉽게 따라할 수 있게 가이드 해주세요.",
-      date: "2025.05",
-    },
-    {
-      name: "코코몽",
-      plan: "노래+토크 1+1",
-      rating: 5,
-      text: "노래방 앱에서 노래 부를 때랑 디스코드에서 대화할 때 세팅이 달라서 매번 바꾸기 힘들었는데, 1+1으로 두 개 세팅 받아서 너무 편해요!",
-      date: "2025.05",
-    },
-    {
-      name: "민트티",
-      plan: "프리미엄",
-      rating: 4,
-      text: "발로란트 하면서VOICE 채팅이 잘 안 됐는데, 게이밍 세팅 후에 팀원들 목소리도 잘 들리고 제 목소리도 선명해졌어요. 추천!",
-      date: "2025.04",
-    },
-    {
-      name: "루나킹",
-      plan: "프로",
-      rating: 5,
-      text: "유튜브 라이브 방송용으로 세팅 맡겼는데, 시청자들이 목소리 quality가 달라졌다고 하네요. 1:1 원격 세팅도 편리했습니다.",
-      date: "2025.04",
-    },
-  ];
-
-  return (
-    <section className="py-20 sm:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            고객 <span className="gradient-text">후기</span>
-          </h2>
-          <p className="text-text-secondary max-w-xl mx-auto">
-            실제로 서비스를 이용하신 분들의 생생한 후기입니다
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.map((review) => (
-            <div
-              key={review.name}
-              className="bg-surface rounded-2xl p-6 border border-white/5 card-hover"
-            >
-              <div className="flex items-center gap-1 mb-3">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span
-                    key={i}
-                    className={i < review.rating ? "text-yellow-400" : "text-gray-600"}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <div className="flex items-center justify-between border-t border-white/5 pt-4">
-                <div>
-                  <div className="text-sm font-semibold">{review.name}</div>
-                  <div className="text-xs text-text-secondary">
-                    {review.plan} 이용
-                  </div>
-                </div>
-                <div className="text-xs text-text-secondary">{review.date}</div>
               </div>
             </div>
           ))}
