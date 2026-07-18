@@ -31,12 +31,32 @@ export default function ConsultSection() {
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">
               상담 신청 완료!
             </h2>
-            <p className="text-text-secondary mb-2">
+            <p className="text-text-secondary mb-6">
               신청해 주셔서 감사합니다.
             </p>
-            <p className="text-text-secondary mb-8">
-              빠른 시간 내에 디스코드 DM으로 연락드리겠습니다.
-            </p>
+            <div className="bg-surface-dark rounded-2xl p-6 mb-8 text-left">
+              <p className="text-sm font-semibold mb-3 text-center">
+                빠른 상담을 위해 아래 아이디 중 하나로
+                <br />
+                <span className="text-primary">친구 추가 후 DM</span>을 보내주세요!
+              </p>
+              <div className="space-y-3">
+                <div className="bg-surface rounded-xl p-4 flex items-center gap-3">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-sm font-bold">P</div>
+                  <div>
+                    <div className="text-sm font-mono text-primary">find_paewol</div>
+                    <div className="text-xs text-text-secondary">친구 추가 후 DM</div>
+                  </div>
+                </div>
+                <div className="bg-surface rounded-xl p-4 flex items-center gap-3">
+                  <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-sm font-bold">B</div>
+                  <div>
+                    <div className="text-sm font-mono text-accent">best_no1_</div>
+                    <div className="text-xs text-text-secondary">친구 추가 후 DM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <button
               onClick={() => setSubmitted(false)}
               className="bg-primary hover:bg-primary-dark px-8 py-3 rounded-xl font-semibold transition-colors"
